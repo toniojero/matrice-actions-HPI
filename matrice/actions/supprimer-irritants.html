@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Action — Détail</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f4ee">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -228,6 +229,28 @@
     h1.title{font-size:42px}
     .meta-row{flex-wrap:wrap;gap:24px}
     .example .row{grid-template-columns:1fr;gap:4px}
+  }
+  @media (max-width:560px){
+    .page{padding:24px 20px 56px}
+    .topbar{padding-bottom:20px;margin-bottom:32px;font-size:10px;letter-spacing:0.12em}
+    h1.title{font-size:30px;line-height:1.1;margin-bottom:18px}
+    .summary{font-size:17px;line-height:1.5}
+    .meta-row{margin-top:28px;padding:18px 0;gap:14px 24px;font-size:10px}
+    .meta-row .lab{font-size:9.5px}
+    section{margin-top:48px}
+    section h2{margin-bottom:16px;font-size:13px}
+    .why{font-size:18px;line-height:1.5}
+    ol.steps{gap:14px}
+    ol.steps li{grid-template-columns:28px 1fr;gap:12px;padding:2px 0}
+    ol.steps li > span{font-size:15px;line-height:1.5}
+    ul.bullets{gap:12px}
+    ul.bullets li{grid-template-columns:12px 1fr;gap:10px;font-size:14.5px}
+    .example{padding:20px 22px}
+    .example .ex-label{margin-bottom:14px;padding-bottom:10px}
+    .example .row{padding:8px 0;font-size:13.5px}
+    .cols{gap:32px}
+    .nav-foot{margin-top:64px;padding-top:24px;flex-direction:column;align-items:stretch;gap:14px;text-align:center}
+    .nav-foot a{font-size:14px}
   }
 
   .nav-foot{
