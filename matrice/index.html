@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>Matrice d'actions — Effort × Impact</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7f4ee">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -164,11 +165,15 @@
     color:inherit;
   }
   .action:last-child{border-bottom:none}
-  .action:hover{
-    background:rgba(0,0,0,0.025);
-    padding-left:8px;
-    padding-right:8px;
+  @media (hover:hover){
+    .action:hover{
+      background:rgba(0,0,0,0.025);
+      padding-left:8px;
+      padding-right:8px;
+    }
+    .action:hover .arrow{opacity:1;transform:translateX(3px)}
   }
+  .action:active{background:rgba(0,0,0,0.05)}
   .action .num{
     font-family:"Newsreader",serif;
     font-style:italic;
@@ -228,7 +233,6 @@
     transition:opacity 0.15s,transform 0.15s;
     width:14px;
   }
-  .action:hover .arrow{opacity:1;transform:translateX(3px)}
 
   .axis-labels{
     display:grid;
@@ -262,6 +266,29 @@
     .legend{padding:24px 28px}
     footer{padding:28px}
     h1{font-size:40px}
+  }
+  @media (max-width:640px){
+    header.cover{padding:36px 20px 28px}
+    main{padding:24px 20px 48px}
+    .legend{padding:20px;gap:14px 22px;font-size:11px}
+    footer{padding:22px 20px;flex-direction:column;align-items:flex-start;gap:10px}
+    h1{font-size:30px;line-height:1.1}
+    .lede{font-size:15.5px}
+    .quadrant{padding:24px 20px 28px;min-height:0}
+    .q-head{margin-bottom:18px;padding-bottom:12px;flex-wrap:wrap;gap:8px 14px}
+    .q-title{font-size:19px}
+    .q-sub{font-size:10.5px}
+    .action{grid-template-columns:34px 1fr auto;gap:12px;padding:12px 0}
+    .action .title{font-size:14px}
+    .action .meta{font-size:10px}
+    .action .num{font-size:12px}
+    .action .badges{gap:6px}
+    .effort{padding:2px 6px;font-size:9px;letter-spacing:0.1em}
+    .stars{font-size:10.5px;width:22px}
+    .arrow{display:none}
+    .axis-labels{font-size:9.5px}
+    .axis-labels > div{padding:0 20px}
+    .top-pick::before{left:-8px;width:2px}
   }
 </style>
 </head>
