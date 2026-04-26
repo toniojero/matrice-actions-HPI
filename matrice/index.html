@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Matrice d'actions — Effort × Impact</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f4ee;
+    --ink:#171513;
+    --ink-soft:#3a3631;
+    --muted:#8a8278;
+    --rule:#d9d1c2;
+    --rule-soft:#e8e2d4;
+    --accent:#1f3a5f;
+    --signal:#c25a2a;
+    --quick:#3d5a3a;
+    --big:#1f3a5f;
+    --easy:#8a7a3a;
+    --defer:#6b5d6e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink)}
+  body{
+    font-family:"Inter",sans-serif;
+    font-weight:300;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Newsreader",serif;font-weight:400}
+  a{color:inherit;text-decoration:none}
+
+  header.cover{
+    padding:80px 64px 56px;
+    border-bottom:1px solid var(--rule);
+    max-width:1600px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--muted);
+    font-weight:500;
+    margin-bottom:24px;
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .eyebrow .dot{width:5px;height:5px;background:var(--signal);border-radius:50%}
+  h1{
+    font-family:"Newsreader",serif;
+    font-weight:400;
+    font-size:56px;
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    margin:0 0 20px;
+    max-width:1100px;
+  }
+  h1 em{font-style:italic;color:var(--ink-soft)}
+  .lede{
+    font-size:18px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    max-width:780px;
+    font-weight:300;
+  }
+
+  .legend{
+    max-width:1600px;
+    margin:0 auto;
+    padding:28px 64px;
+    border-bottom:1px solid var(--rule);
+    display:flex;
+    flex-wrap:wrap;
+    gap:40px;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .legend > div{display:flex;align-items:baseline;gap:14px}
+  .legend .lab{
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:10px;
+    font-weight:600;
+    color:var(--muted);
+  }
+  .legend .it{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft)}
+  .legend .it .swatch{width:10px;height:10px;border-radius:1px}
+  .legend .it .stars{color:var(--signal);letter-spacing:1px}
+
+  main{max-width:1600px;margin:0 auto;padding:48px 64px 80px}
+
+  .matrix{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--rule);
+    background:var(--rule);
+  }
+  .quadrant{
+    background:var(--paper);
+    padding:36px 36px 40px;
+    min-height:420px;
+    position:relative;
+  }
+  .q-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:28px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--rule);
+  }
+  .q-marker{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+  }
+  .q-marker .roman{
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--muted);
+    font-weight:400;
+  }
+  .q-title{
+    font-family:"Newsreader",serif;
+    font-size:22px;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .q-sub{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--muted);
+  }
+  .q-count{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--muted);
+    font-feature-settings:"tnum";
+  }
+
+  .actions{
+    display:flex;
+    flex-direction:column;
+  }
+  .action{
+    display:grid;
+    grid-template-columns:64px 1fr auto;
+    align-items:center;
+    gap:20px;
+    padding:14px 0;
+    border-bottom:1px solid var(--rule-soft);
+    cursor:pointer;
+    transition:background 0.15s,padding 0.15s;
+    color:inherit;
+  }
+  .action:last-child{border-bottom:none}
+  .action:hover{
+    background:rgba(0,0,0,0.025);
+    padding-left:8px;
+    padding-right:8px;
+  }
+  .action .num{
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--muted);
+    font-feature-settings:"tnum";
+  }
+  .action .body{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .action .title{
+    font-size:14.5px;
+    color:var(--ink);
+    font-weight:400;
+    line-height:1.35;
+  }
+  .action .meta{
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--muted);
+    display:flex;
+    gap:10px;
+  }
+  .action .meta .cat{color:var(--ink-soft);font-weight:500}
+  .action .badges{display:flex;gap:8px;align-items:center}
+  .effort{
+    font-size:9.5px;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    padding:3px 8px;
+    border:1px solid var(--rule);
+    border-radius:1px;
+    color:var(--ink-soft);
+    font-weight:500;
+  }
+  .effort.lo{border-color:#bcc7b8;color:#3d5a3a}
+  .effort.md{border-color:#d9c79a;color:#7a6420}
+  .effort.hi{border-color:#d9b8b0;color:#8a3a25}
+  .stars{color:var(--signal);letter-spacing:1px;font-size:11px;width:28px;text-align:right}
+  .top-pick{
+    position:relative;
+  }
+  .top-pick::before{
+    content:"";
+    position:absolute;
+    left:-12px;
+    top:50%;
+    transform:translateY(-50%);
+    width:3px;
+    height:60%;
+    background:var(--signal);
+  }
+  .arrow{
+    font-family:"Newsreader",serif;
+    font-size:16px;
+    color:var(--muted);
+    opacity:0;
+    transition:opacity 0.15s,transform 0.15s;
+    width:14px;
+  }
+  .action:hover .arrow{opacity:1;transform:translateX(3px)}
+
+  .axis-labels{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-top:14px;
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--muted);
+  }
+  .axis-labels > div{padding:0 36px}
+
+  footer{
+    max-width:1600px;
+    margin:0 auto;
+    padding:32px 64px 48px;
+    border-top:1px solid var(--rule);
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    color:var(--muted);
+  }
+  footer .sig{font-family:"Newsreader",serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink-soft)}
+
+  @media (max-width:1100px){
+    .matrix{grid-template-columns:1fr}
+    header.cover{padding:48px 28px 36px}
+    main{padding:32px 28px 56px}
+    .legend{padding:24px 28px}
+    footer{padding:28px}
+    h1{font-size:40px}
+  }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="eyebrow">
+    <span>Note clinique</span>
+    <span class="dot"></span>
+    <span>2026</span>
+    <span class="dot"></span>
+    <span>Matrice d'actions</span>
+  </div>
+  <h1 class="serif">Effort × Impact <em>—</em><br/>où dépenser l'énergie ce mois-ci.</h1>
+  <p class="lede">Cinquante-trois actions issues du bilan, classées en quatre quadrants. Le quadrant supérieur gauche est plein. Commencer par là. Cliquer sur chaque action pour ouvrir l'exemple d'implémentation.</p>
+</header>
+
+<div class="legend">
+  <div>
+    <span class="lab">Effort</span>
+    <span class="it"><span class="swatch" style="background:#3d5a3a"></span>Faible</span>
+    <span class="it"><span class="swatch" style="background:#7a6420"></span>Moyen</span>
+    <span class="it"><span class="swatch" style="background:#8a3a25"></span>Fort</span>
+  </div>
+  <div>
+    <span class="lab">Impact</span>
+    <span class="it"><span class="stars">★</span>Élevé</span>
+    <span class="it"><span class="stars">★★</span>Maximal</span>
+  </div>
+  <div>
+    <span class="lab">Repère</span>
+    <span class="it"><span style="width:3px;height:14px;background:var(--signal);display:inline-block;margin-right:4px"></span>ROI le plus élevé</span>
+  </div>
+</div>
+
+<main>
+  <div class="matrix" id="matrix"></div>
+  <div class="axis-labels">
+    <div>← Effort faible · Quadrants à privilégier</div>
+    <div style="text-align:right">Effort élevé · Quadrants à arbitrer →</div>
+  </div>
+</main>
+
+<footer>
+  <div>Source : bilan WPPSI-IV · 53 actions · 4 quadrants</div>
+  <div class="sig">Cliquer une action pour l'ouvrir.</div>
+</footer>
+
+<script src="data.js?v=53"></script>
+<script>
+  const QUADRANTS = [
+    {key:"quick", roman:"I", title:"Gains rapides", sub:"Effort faible · Impact élevé"},
+    {key:"big",   roman:"II", title:"Grands paris", sub:"Effort moyen à élevé · Impact élevé"},
+    {key:"easy",  roman:"III", title:"Compléments faciles", sub:"Effort faible · Impact moindre"},
+    {key:"defer", roman:"IV", title:"À différer ou conditionnel", sub:"Effort élevé · Impact conditionnel"},
+  ];
+
+  const effortClass = (e) => e==="Faible" ? "lo" : e==="Moyen" ? "md" : "hi";
+  const stars = (n) => n>=2 ? "★★" : "★";
+
+  const matrix = document.getElementById("matrix");
+  let counter = 0;
+  QUADRANTS.forEach(q => {
+    const items = (window.ACTIONS || []).filter(a => a.quadrant === q.key);
+    const el = document.createElement("section");
+    el.className = "quadrant";
+    el.innerHTML = `
+      <div class="q-head">
+        <div class="q-marker">
+          <span class="roman">${q.roman}.</span>
+          <div>
+            <div class="q-title">${q.title}</div>
+            <div class="q-sub">${q.sub}</div>
+          </div>
+        </div>
+        <div class="q-count">${items.length} actions</div>
+      </div>
+      <div class="actions"></div>
+    `;
+    const list = el.querySelector(".actions");
+    items.forEach(a => {
+      counter++;
+      const num = String(counter).padStart(2,"0");
+      const a_el = document.createElement("a");
+      a_el.className = "action" + (a.topPick ? " top-pick" : "");
+      a_el.href = `actions/${a.slug}.html`;
+      a_el.innerHTML = `
+        <span class="num">${num}</span>
+        <span class="body">
+          <span class="title">${a.title}</span>
+          <span class="meta"><span class="cat">${a.category}</span></span>
+        </span>
+        <span class="badges">
+          <span class="effort ${effortClass(a.effort)}">${a.effort}</span>
+          <span class="stars">${a.impact ? stars(a.impact) : ""}</span>
+          <span class="arrow">→</span>
+        </span>
+      `;
+      list.appendChild(a_el);
+    });
+    matrix.appendChild(el);
+  });
+</script>
+
+</body>
+</html>

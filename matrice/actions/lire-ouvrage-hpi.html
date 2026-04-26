@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Action — Détail</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f7f4ee;
+    --ink:#171513;
+    --ink-soft:#3a3631;
+    --muted:#8a8278;
+    --rule:#d9d1c2;
+    --rule-soft:#e8e2d4;
+    --accent:#1f3a5f;
+    --signal:#c25a2a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink)}
+  body{
+    font-family:"Inter",sans-serif;
+    font-weight:300;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:"Newsreader",serif;font-weight:400}
+  a{color:inherit}
+
+  .page{max-width:1100px;margin:0 auto;padding:48px 64px 96px}
+
+  .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:32px;
+    margin-bottom:56px;
+    border-bottom:1px solid var(--rule);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--muted);
+  }
+  .topbar a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:500;
+  }
+  .topbar a:hover{color:var(--signal)}
+  .topbar .ref{font-feature-settings:"tnum"}
+
+  .eyebrow{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--muted);
+    font-weight:500;
+    margin-bottom:24px;
+    display:flex;
+    gap:14px;
+    align-items:center;
+  }
+  .eyebrow .dot{width:5px;height:5px;background:var(--signal);border-radius:50%}
+  .eyebrow .top-pick-tag{
+    color:var(--signal);
+    font-weight:600;
+    letter-spacing:0.18em;
+  }
+
+  h1.title{
+    font-family:"Newsreader",serif;
+    font-weight:400;
+    font-size:60px;
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    margin:0 0 24px;
+    max-width:900px;
+  }
+  .summary{
+    font-size:21px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    max-width:780px;
+    font-weight:300;
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-weight:400;
+  }
+
+  .meta-row{
+    display:flex;
+    gap:48px;
+    margin-top:48px;
+    padding:24px 0;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+  }
+  .meta-row > div{display:flex;flex-direction:column;gap:6px}
+  .meta-row .lab{color:var(--muted);font-size:10px}
+  .meta-row .val{color:var(--ink-soft);font-weight:500}
+  .meta-row .stars{color:var(--signal);letter-spacing:2px;font-size:13px}
+
+  section{margin-top:72px}
+  section h2{
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    color:var(--muted);
+    margin:0 0 24px;
+    padding-bottom:12px;
+    border-bottom:1px solid var(--rule);
+  }
+
+  .why{
+    font-family:"Newsreader",serif;
+    font-size:24px;
+    line-height:1.45;
+    color:var(--ink);
+    font-weight:400;
+    max-width:820px;
+    letter-spacing:-0.005em;
+  }
+
+  ol.steps{
+    list-style:none;
+    counter-reset:step;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:18px;
+    max-width:880px;
+  }
+  ol.steps li{
+    counter-increment:step;
+    display:grid;
+    grid-template-columns:48px 1fr;
+    gap:20px;
+    padding:4px 0;
+  }
+  ol.steps li::before{
+    content:counter(step,decimal-leading-zero);
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-size:14px;
+    color:var(--signal);
+    padding-top:3px;
+    font-feature-settings:"tnum";
+  }
+  ol.steps li > span{font-size:16px;line-height:1.55}
+
+  ul.bullets{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:14px;
+    max-width:780px;
+  }
+  ul.bullets li{
+    display:grid;
+    grid-template-columns:14px 1fr;
+    gap:14px;
+    font-size:15px;
+    line-height:1.55;
+  }
+  ul.bullets li::before{
+    content:"—";
+    color:var(--muted);
+    padding-top:1px;
+  }
+
+  .example{
+    border:1px solid var(--rule);
+    background:#fbf9f3;
+    padding:32px 36px;
+    max-width:820px;
+  }
+  .example .ex-label{
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    margin-bottom:20px;
+    padding-bottom:12px;
+    border-bottom:1px dashed var(--rule);
+  }
+  .example .row{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:24px;
+    padding:10px 0;
+    border-bottom:1px solid var(--rule-soft);
+    font-size:14px;
+    line-height:1.5;
+  }
+  .example .row:last-child{border-bottom:none}
+  .example .row .k{
+    font-family:"Newsreader",serif;
+    font-style:italic;
+    color:var(--accent);
+    font-size:13.5px;
+    padding-top:1px;
+  }
+  .example .row .v{color:var(--ink-soft)}
+
+  .cols{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+  @media (max-width:900px){
+    .cols{grid-template-columns:1fr;gap:48px}
+    .page{padding:32px 28px 64px}
+    h1.title{font-size:42px}
+    .meta-row{flex-wrap:wrap;gap:24px}
+    .example .row{grid-template-columns:1fr;gap:4px}
+  }
+
+  .nav-foot{
+    margin-top:96px;
+    padding-top:32px;
+    border-top:1px solid var(--rule);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:13px;
+  }
+  .nav-foot a{
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-family:"Newsreader",serif;
+    font-style:italic;
+  }
+  .nav-foot a:hover{color:var(--signal)}
+  .nav-foot .center{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    color:var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="page" id="page"></div>
+
+<script src="../data.js?v=53"></script>
+<script>
+  const slug = location.pathname.split("/").pop().replace(".html","");
+  const all = window.ACTIONS || [];
+  const idx = all.findIndex(a => a.slug === slug);
+  const a = all[idx];
+
+  if(!a){
+    document.getElementById("page").innerHTML = `<p>Action introuvable. <a href="../index.html">Retour à la matrice</a></p>`;
+  } else {
+    const num = String(idx+1).padStart(2,"0");
+    const total = String(all.length).padStart(2,"0");
+    const prev = all[(idx-1+all.length)%all.length];
+    const next = all[(idx+1)%all.length];
+    const stars = a.impact>=2 ? "★★" : "★";
+
+    const exampleHTML = a.example ? `
+      <section>
+        <h2>${a.example.label || "Exemple"}</h2>
+        <div class="example">
+          <div class="ex-label">${a.example.label || "Exemple"}</div>
+          ${a.example.rows.map(r => `<div class="row"><div class="k">${r[0]}</div><div class="v">${r[1]}</div></div>`).join("")}
+        </div>
+      </section>
+    ` : "";
+
+    document.getElementById("page").innerHTML = `
+      <div class="topbar">
+        <a href="../index.html">← Matrice d'actions</a>
+        <div class="ref">${num} / ${total}</div>
+      </div>
+
+      <div class="eyebrow">
+        <span>${a.category}</span>
+        <span class="dot"></span>
+        <span>Effort ${a.effort.toLowerCase()}</span>
+        <span class="dot"></span>
+        <span>Impact ${a.impact>=2 ? "maximal" : "élevé"}</span>
+        ${a.topPick ? `<span class="dot"></span><span class="top-pick-tag">ROI le plus élevé</span>` : ""}
+      </div>
+
+      <h1 class="title">${a.title}.</h1>
+      <p class="summary">${a.summary}</p>
+
+      <div class="meta-row">
+        <div><span class="lab">Catégorie</span><span class="val">${a.category}</span></div>
+        <div><span class="lab">Effort</span><span class="val">${a.effort}</span></div>
+        <div><span class="lab">Impact</span><span class="val stars">${stars}</span></div>
+        <div><span class="lab">Quadrant</span><span class="val">${quadrantName(a.quadrant)}</span></div>
+      </div>
+
+      <section>
+        <h2>Pourquoi</h2>
+        <p class="why">${a.why}</p>
+      </section>
+
+      <section>
+        <h2>Comment faire</h2>
+        <ol class="steps">
+          ${a.steps.map(s => `<li><span>${s}</span></li>`).join("")}
+        </ol>
+      </section>
+
+      ${exampleHTML}
+
+      <div class="cols">
+        <section style="margin-top:72px">
+          <h2>Matériel</h2>
+          <ul class="bullets">${a.materials.map(m => `<li>${m}</li>`).join("")}</ul>
+        </section>
+        <section style="margin-top:72px">
+          <h2>Signes que ça fonctionne</h2>
+          <ul class="bullets">${a.signals.map(s => `<li>${s}</li>`).join("")}</ul>
+        </section>
+      </div>
+
+      <section>
+        <h2>Pièges à éviter</h2>
+        <ul class="bullets">${a.pitfalls.map(p => `<li>${p}</li>`).join("")}</ul>
+      </section>
+
+      <div class="nav-foot">
+        <a href="${prev.slug}.html">← ${prev.title}</a>
+        <a href="../index.html" class="center">Matrice</a>
+        <a href="${next.slug}.html">${next.title} →</a>
+      </div>
+    `;
+    document.title = `${a.title} — Matrice d'actions`;
+  }
+
+  function quadrantName(q){
+    return ({quick:"Gains rapides",big:"Grands paris",easy:"Compléments faciles",defer:"À différer"})[q] || "—";
+  }
+</script>
+</body>
+</html>
