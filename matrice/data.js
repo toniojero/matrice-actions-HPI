@@ -11,7 +11,7 @@ window.ACTIONS = [
     impact: 2,
     quadrant: "quick",
     topPick: true,
-    summary: "Note partagée entre les deux parents. Cinq champs, deux à quatre entrées par semaine. Base de preuves longitudinale pour l'évaluation de juillet 2026.",
+    summary: "Note partagée entre les deux parents. Cinq champs, deux à quatre entrées par semaine. Base de preuves longitudinale pour le bilan d'évaluation.",
     why: "C'est l'action au ROI le plus élevé disponible avant l'évaluation. Coût : dix minutes par semaine. Sortie : la documentation qui détermine si le rendez-vous aboutit à un diagnostic précis ou à un nouveau report.",
     steps: [
       "Créer une note partagée (Notes Apple, Google Keep, Notion) accessible aux deux parents.",
@@ -19,7 +19,7 @@ window.ACTIONS = [
       "Ne pas tout capturer. Capturer le typique : 2 à 4 entrées significatives par semaine.",
       "Écrire en descriptif, pas en interprétatif. « Elle s'est bouché les oreilles » plutôt que « elle était submergée ».",
       "Relire ensemble une fois par semaine, repérer les patterns récurrents.",
-      "Imprimer ou exporter en PDF avant le rendez-vous de juillet 2026."
+      "Imprimer ou exporter en PDF avant le rendez-vous d'évaluation."
     ],
     materials: [
       "Une note numérique partagée, ou un carnet papier dédié.",
@@ -28,7 +28,7 @@ window.ACTIONS = [
     example: {
       label: "Exemple d'entrée",
       rows: [
-        ["Date", "2026-04-22 · 17h30 · Jeudi"],
+        ["Date", "Jeudi · 17h30"],
         ["Contexte", "Sortie d'école, cour, groupe de 6 enfants."],
         ["Déclencheur", "Sifflet bruyant d'un autre parent."],
         ["Réaction", "Bouché les oreilles, demandé à partir, refus du goûter pendant 20 min."],
@@ -671,7 +671,7 @@ window.ACTIONS = [
     effort: "Faible",
     impact: 1,
     quadrant: "quick",
-    summary: "Demander un rendez-vous, partager les éléments-clés du bilan WPPSI, expliquer le profil hétérogène et les besoins concrets.",
+    summary: "Demander un rendez-vous, partager les éléments-clés du bilan psychométrique, expliquer le profil hétérogène et les besoins concrets.",
     why: "La maîtresse passe 6 heures par jour avec l'enfant. Elle a un effet de levier énorme — mais seulement si elle dispose des bonnes informations. Un bilan dans un tiroir n'aide personne.",
     steps: [
       "Demander un rendez-vous formel (15-20 min, hors récréation).",
@@ -692,7 +692,7 @@ window.ACTIONS = [
         ["Fragilités", "Vitesse de traitement · Transitions · Sensibilité sensorielle (auditif, tactile)"],
         ["Déclencheurs", "Bruit fort soudain · Étiquettes · Changements non-annoncés"],
         ["Ce qui aide", "Préavis 5 min · Place calme · Casque possible · Choix limités"],
-        ["Évaluation", "Diagnostic en cours, RDV juillet 2026"]
+        ["Évaluation", "Diagnostic en cours, RDV à venir"]
       ]
     },
     signals: [
@@ -792,7 +792,7 @@ window.ACTIONS = [
     effort: "Faible",
     impact: 1,
     quadrant: "quick",
-    summary: "Quelques vidéos de 30 à 60 secondes des moments-clés (crise, rigidité, réaction sensorielle) qui complètent le journal pour l'évaluateur de juillet.",
+    summary: "Quelques vidéos de 30 à 60 secondes des moments-clés (crise, rigidité, réaction sensorielle) qui complètent le journal pour l'évaluateur.",
     why: "Une description écrite ne capture jamais la qualité d'une réaction. 60 secondes de vidéo donnent à l'évaluateur ce qu'aucun récit ne peut transmettre : l'intensité, la durée, le contexte.",
     steps: [
       "Décider à l'avance les types de moments à filmer (crises typiques, rituel rigide, réaction sensorielle).",
@@ -841,7 +841,7 @@ window.ACTIONS = [
     why: "L'arrêt prématuré d'une prise en charge en cours est une perte sèche. Même sans diagnostic finalisé, le travail psychomoteur a un effet propre : meilleure proprioception, meilleure coordination, meilleure régulation.",
     steps: [
       "Confirmer la fréquence et la durée prévue avec le psychomotricien.",
-      "Demander un point d'étape semestriel écrit — utile pour l'évaluation de juillet.",
+      "Demander un point d'étape semestriel écrit — utile pour l'évaluation à venir.",
       "Faire le lien entre les exercices en séance et la maison (1 ou 2 transposables par semaine).",
       "Communiquer le journal sensoriel au psychomotricien.",
       "Ne pas interrompre pour un autre soin sans concertation."
@@ -1208,13 +1208,13 @@ window.ACTIONS = [
     ]
   },
   {
-    slug: "preparer-rdv-juillet",
-    title: "Préparer le rendez-vous de juillet 2026",
+    slug: "preparer-rdv-evaluation",
+    title: "Préparer le rendez-vous d'évaluation",
     category: "Clinique",
     effort: "Moyen",
     impact: 1,
     quadrant: "big",
-    summary: "Confirmer la date, préparer une anamnèse développementale écrite, rassembler les documents : bilan WPPSI, journal comportemental, vidéos sélectionnées, observations de la maîtresse.",
+    summary: "Confirmer la date, préparer une anamnèse développementale écrite, rassembler les documents : bilan psychométrique, journal comportemental, vidéos sélectionnées, observations de la maîtresse.",
     why: "Le rendez-vous est court (1 à 3h selon l'évaluateur). La qualité des données présentées détermine si la séance aboutit à un diagnostic précis ou à des compléments d'investigation. La préparation multiplie le rendement par 3.",
     steps: [
       "Confirmer la date 6 mois à l'avance, puis 1 mois à l'avance.",
@@ -1232,7 +1232,7 @@ window.ACTIONS = [
     example: {
       label: "Pochette à apporter",
       rows: [
-        ["Bilan WPPSI", "Original + copie."],
+        ["Bilan psychométrique", "Original + copie."],
         ["Journal comportemental", "PDF imprimé, 3 derniers mois."],
         ["Anamnèse", "2-3 pages structurées."],
         ["Note maîtresse", "1 page."],
@@ -1258,7 +1258,7 @@ window.ACTIONS = [
     effort: "Moyen",
     impact: 1,
     quadrant: "big",
-    summary: "Un livre accessible par parent, lu avant l'évaluation de juillet. Construit une grille de lecture commune et désamorce les interprétations divergentes.",
+    summary: "Un livre accessible par parent, lu avant l'évaluation. Construit une grille de lecture commune et désamorce les interprétations divergentes.",
     why: "Beaucoup de désalignement parental vient d'interprétations différentes du même comportement. Un cadre théorique partagé — même imparfait — augmente massivement la cohérence quotidienne.",
     steps: [
       "Choisir un livre accessible, pas un manuel technique.",
@@ -1491,7 +1491,7 @@ window.ACTIONS = [
     summary: "Accompagnement parental basé sur la thérapie cognitivo-comportementale. À envisager après le diagnostic si la dynamique se complique.",
     why: "Outil puissant mais coûteux et exigeant. Précipité avant le diagnostic. Une fois le profil clarifié, peut être envisagé si les approches plus simples ne suffisent pas.",
     steps: [
-      "Attendre le diagnostic de juillet 2026.",
+      "Attendre le diagnostic.",
       "Évaluer si les actions Q1+Q2 ont produit l'effet attendu.",
       "Si insuffisant, demander une recommandation au psychologue référent.",
       "Démarrer par un bilan court (3 séances)."
@@ -1551,7 +1551,7 @@ window.ACTIONS = [
     summary: "Prise en charge spécialisée si le profil sensoriel est confirmé après diagnostic. Effort logistique et financier élevé, à n'engager qu'après indication clinique.",
     why: "Très utile si indiquée, redondante sinon. La psychomotricité couvre déjà une partie du périmètre. À envisager après le diagnostic, sur recommandation explicite.",
     steps: [
-      "Attendre l'évaluation de juillet 2026.",
+      "Attendre l'évaluation.",
       "Demander à l'évaluateur si l'ergothérapie est indiquée.",
       "Si oui, identifier un ergo formé en intégration sensorielle (ASI / Ayres).",
       "Démarrer par un bilan ergo complet.",
@@ -1732,7 +1732,7 @@ window.ACTIONS = [
     summary: "Petits groupes structurés animés par psychologue ou orthophoniste. Indication post-diagnostic uniquement, si déficit social spécifique confirmé.",
     why: "Très utile dans le cadre TSA confirmé, mais inadapté avant clarification diagnostique. À ne pas confondre avec un cours de socialisation.",
     steps: [
-      "Attendre l'évaluation de juillet 2026.",
+      "Attendre l'évaluation.",
       "Demander une indication explicite.",
       "Choisir un programme structuré (Vermeulen, Baghdadli, ou équivalent).",
       "Démarrer par un cycle court."
@@ -1763,12 +1763,12 @@ window.ACTIONS = [
     steps: [
       "Évaluer d'abord ce que la maîtresse accepte d'elle-même.",
       "Si insuffisant, demander rendez-vous au directeur d'école.",
-      "Demander un PAP par écrit, joindre le bilan WPPSI.",
+      "Demander un PAP par écrit, joindre le bilan psychométrique.",
       "Le médecin scolaire évalue et propose les aménagements.",
       "Signature, mise en œuvre, révision annuelle."
     ],
     materials: [
-      "Bilan WPPSI complet.",
+      "Bilan psychométrique complet.",
       "Note du psychologue ou pédiatre.",
       "Patience administrative (3-6 mois)."
     ],
@@ -1792,7 +1792,7 @@ window.ACTIONS = [
     summary: "Décision lourde, à n'envisager que si la maturité émotionnelle suit le niveau cognitif. Profil hétérogène = grande prudence.",
     why: "Le saut de classe résout l'ennui scolaire mais expose à des fragilités sociales et émotionnelles. Pour un profil hétérogène avec sensibilités sensorielles, le risque est souvent supérieur au bénéfice.",
     steps: [
-      "Ne pas l'envisager avant le diagnostic de juillet 2026.",
+      "Ne pas l'envisager avant le diagnostic.",
       "Demander explicitement l'avis de l'évaluateur sur la maturité émotionnelle.",
       "Si envisagé, faire un essai de quelques semaines avant décision.",
       "Évaluer aussi alternatives : enrichissement, décloisonnement.",
@@ -1821,11 +1821,11 @@ window.ACTIONS = [
     impact: 0,
     quadrant: "defer",
     summary: "Examens ORL et ophtalmologique pour écarter une cause sensorielle de base. Standard avant toute évaluation neurodéveloppementale.",
-    why: "Indispensable comme préalable mais souvent déjà fait. À vérifier dans le carnet de santé. Si pas fait depuis 18 mois, à refaire avant juillet 2026.",
+    why: "Indispensable comme préalable mais souvent déjà fait. À vérifier dans le carnet de santé. Si pas fait depuis 18 mois, à refaire avant l'évaluation.",
     steps: [
       "Vérifier dans le carnet de santé les derniers bilans.",
       "Si > 18 mois, prendre rendez-vous ORL et ophtalmo.",
-      "Apporter les résultats à l'évaluation de juillet."
+      "Apporter les résultats à l'évaluation."
     ],
     materials: [
       "Rendez-vous ORL.",
@@ -1848,8 +1848,8 @@ window.ACTIONS = [
     effort: "Moyen",
     impact: 0,
     quadrant: "defer",
-    summary: "Rendez-vous pédiatre si sommeil, alimentation, ou anxiété s'aggravent significativement avant juillet. Filet de sécurité.",
-    why: "Le rendez-vous de juillet est lointain. Si une aggravation se manifeste, le pédiatre peut intervenir en première ligne sans attendre l'évaluation neuropsychologique.",
+    summary: "Rendez-vous pédiatre si sommeil, alimentation, ou anxiété s'aggravent significativement avant l'évaluation. Filet de sécurité.",
+    why: "Le rendez-vous d'évaluation peut être lointain. Si une aggravation se manifeste, le pédiatre peut intervenir en première ligne sans attendre l'évaluation neuropsychologique.",
     steps: [
       "Définir les seuils d'alerte avec le pédiatre par avance.",
       "Tenir un suivi simple : sommeil, appétit, humeur.",
@@ -1877,7 +1877,7 @@ window.ACTIONS = [
     impact: 0,
     quadrant: "defer",
     summary: "Une fois le diagnostic posé, identifier les bons professionnels (psychologue, ergothérapeute, orthophoniste si indiqué) et coordonner.",
-    why: "Travail majeur, mais conditionné au diagnostic. Avant juillet, prématuré et risqué. Après, essentiel — la qualité de l'équipe détermine la trajectoire des 5 prochaines années.",
+    why: "Travail majeur, mais conditionné au diagnostic. Avant le diagnostic, prématuré et risqué. Après, essentiel — la qualité de l'équipe détermine la trajectoire des 5 prochaines années.",
     steps: [
       "Attendre le diagnostic.",
       "Demander à l'évaluateur ses recommandations professionnelles.",
